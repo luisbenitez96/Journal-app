@@ -19,18 +19,18 @@ import {
   startLoginWithEmailPassword,
 } from "../../store/auth";
 
+const formData = {
+  email: "",
+  password: " ",
+};
 export const LoginPage = () => {
   const { status, errorMessage } = useSelector((state) => state.auth); // el useSelector sirve para apuntar a mi estado global y obtener el estado de auth
   const dispatch = useDispatch();
 
-  const { onInputChange, email, password } = useForm({
-    email: "junior@google.com",
-    password: " 123456",
-  });
+  const { onInputChange, email, password } = useForm(formData);
   const isAuthenticating = useMemo(() => status === "checking", [status]); // useMemo sirve para memorizar el estado de status y solo se actualiza si el status cambia
   const onSubmit = (event) => {
     event.preventDefault();
-    //!No es esta funcion
     dispatch(startLoginWithEmailPassword({ email, password }));
   };
   const onGoogleSignIn = () => {

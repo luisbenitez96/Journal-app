@@ -6,6 +6,10 @@ export const useForm = (initialForm = {}, formValidations = {}) => {
   useEffect(() => {
     createValidators();
   }, [formState]);
+  useEffect(() => {
+    setFormState(initialForm);
+  }, [initialForm]);
+
   const isFormValid = useMemo(() => {
     // se utiliza useMemo para memorizar el valor de isFormValid y no se ejecute cada vez que se renderiza el componente, solo se ejecuta cuando el estado del formulario cambia
     for (const formValue of Object.keys(formValidation)) {
