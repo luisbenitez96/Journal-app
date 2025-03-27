@@ -3,9 +3,11 @@ import { useEffect, useMemo, useState } from "react";
 export const useForm = (initialForm = {}, formValidations = {}) => {
   const [formState, setFormState] = useState(initialForm);
   const [formValidation, setFormValidation] = useState({});
+
   useEffect(() => {
     createValidators();
   }, [formState]);
+
   useEffect(() => {
     setFormState(initialForm);
   }, [initialForm]);
