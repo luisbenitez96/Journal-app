@@ -1,5 +1,5 @@
 export const fileUpload = async (file) => {
-  if (!file) throw new Error("No file found");
+  if (!file) return null;
 
   const cloudUrl = "https://api.cloudinary.com/v1_1/journal-reactapp/upload";
   const formData = new FormData();
@@ -34,7 +34,8 @@ export const fileUpload = async (file) => {
     // se retorna la secure_url que la que contiene la imagen que se
     // subio en el servidor
   } catch (error) {
-    throw new Error(error.message);
+    // throw new Error(error.message);
+    return null;
   }
 };
 
